@@ -14,13 +14,13 @@ import org.springframework.web.context.request.WebRequest;
 public class ControllerExceptionHandler {
 
 
-        @ExceptionHandler(value = {IllegalArgumentException.class})
-        @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
-        public ResponseEntity<VndErrors> outOfRangeException(IllegalArgumentException e, WebRequest request) {
-            VndErrors error = new VndErrors(request.toString(), e.getMessage());
-            ResponseEntity<VndErrors> responseEntity = new ResponseEntity<>(error, HttpStatus.UNPROCESSABLE_ENTITY);
-            return responseEntity;
-        }
+    @ExceptionHandler(value = {IllegalArgumentException.class})
+    @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
+    public ResponseEntity<VndErrors> outOfRangeException(IllegalArgumentException e, WebRequest request) {
+        VndErrors error = new VndErrors(request.toString(), e.getMessage());
+        ResponseEntity<VndErrors> responseEntity = new ResponseEntity<>(error, HttpStatus.UNPROCESSABLE_ENTITY);
+        return responseEntity;
+    }
 
 
 }

@@ -10,7 +10,7 @@ import javax.validation.constraints.Size;
 
 @Entity
 @JsonIgnoreProperties({"hibernatelazyinitializer", "handler"})
-@Table(name = "com.example.July22Project.Games")
+@Table(name = "Games")
 
 public class Games {
 
@@ -43,7 +43,8 @@ public class Games {
     private Integer quantity;
 
 
-    public Games(){}
+    public Games() {
+    }
 
     public Games(@Size(max = 11) int gameId, @NotEmpty @Size(max = 50) String title, @NotEmpty @Size(max = 50) String ersbRating, @NotEmpty String description, @NotNull @Digits(integer = 5, fraction = 2) Double price, @NotEmpty @Size(max = 50) String studio, @NotNull @Size(max = 11) Integer quantity) {
         this.gameId = gameId;

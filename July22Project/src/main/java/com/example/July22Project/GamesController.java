@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -12,11 +11,11 @@ public class GamesController {
 
 
     @Autowired
-    private ServiceLayer service;
+    private GamesServiceLayer service;
 
 
     @RequestMapping(value = "/games", method = RequestMethod.GET)
-    public List<Games> gameList(){
+    public List<Games> gameList() {
         return service.gameList();
     }
 
@@ -31,9 +30,10 @@ public class GamesController {
         return game;
     }
 
-    @RequestMapping(value = "/games/{id}", method = RequestMethod.DELETE)
-    public void deleteGame(@PathVariable Integer id) {
-        service.deleteGame(id);
+    @RequestMapping(value = "/games/{id}", method = RequestMethod.PUT)
+    public void updateGame(@RequestBody @Valid Games game, @PathVariable Integer id) {
+
+        service.updateGame(game, id);
     }
 
     @RequestMapping(value = "/games/{id}", method = RequestMethod.DELETE)
